@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>کام بازار - مکمل ڈیمو</title>
+  <meta name="description" content="کام بازار - سیکھو، کام کرو، کماؤ۔ ڈیمو ورژن (EasyPaisa/JazzCash integration placeholders included)." />
+  <style>
+    /* سادہ موبائل فرینڈلی اسٹائل */
+    :root{--primary:#0d6efd;--muted:#6c757d}
+    body{font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Noto Nastaliq Urdu", sans-serif; margin:0; background: linear-gradient(180deg,#f7fbff,#eef7ff); color:#111}
+    .container{max-width:900px;margin:18px auto;padding:16px}
+    header{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:48px;height:48px;border-radius:10px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{font-size:20px;margin:0}
+    nav{display:flex;gap:8px;flex-wrap:wrap}
+    .nav-btn{background:#fff;border:1px solid #e6edf8;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--primary);cursor:pointer}
+    .card{background:#fff;border-radius:12px;padding:14px;margin-top:14px;box-shadow:0 6px 18px rgba(13,110,253,0.06)}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .col{flex:1 1 240px;min-width:220px}
+    .muted{color:var(--muted);font-size:13px}
+    .btn{background:var(--primary);color:#fff;padding:8px 12px;border-radius:10px;border:none;cursor:pointer}
+    .btn-ghost{background:#fff;border:1px solid #e6edf8;color:var(--primary)}
+    input,select,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid #e6edf8;margin-top:6px}
+    .task{border:1px dashed #e6edf8;padding:10px;border-radius:10px;margin-top:8px}
+    .small{font-size:13px}
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+    .share-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+    .share-btn{padding:8px 12px;border-radius:20px;text-decoration:none;color:#fff}
+    .fb{background:#3b5998}.wa{background:#25D366}.tw{background:#1DA1F2}
+    .counter{display:inline-block;padding:8px 12px;background:#fff;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.05)}
+    .label{font-weight:600}
+    .center{text-align:center}
+    .notice{background:#fffbe6;border:1px solid #fff0b3;padding:10px;border-radius:8px;margin-top:10px}
+    /* responsive */
+    @media(max-width:520px){header{flex-direction:column;align-items:flex-start;gap:10px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">KB</div>
+        <div>
+          <h1>کام بازار</h1>
+          <div class="muted small">سیکھو • کام کرو • کماؤ</div>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-btn" onclick="showSection('home')">ہوم</button>
+        <button class="nav-btn" onclick="showSection('profile')">میری پروفائل</button>
+        <button class="nav-btn" onclick="showSection('tasks')">ٹاسک</button>
+        <button class="nav-btn" onclick="showSection('wallet')">والٹ</button>
+        <button class="nav-btn" onclick="showSection('admin')">Admin</button>
+      </nav>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="card">
+      <div class="center">
+        <h2>خوش آمدید — کام بازار (ڈیمو)</h2>
+        <p class="muted">یہ فائل پورا ایک جگہ میں تیار کی گئی ہے۔ نیچے پروفائل، ٹاسکس، پیمنٹ اور ویڈراول سب موجود ہیں۔</p>
+        <div class="share-row" style="margin-top:8px">
+          <a class="share-btn fb" href="#" onclick="share('facebook')">Facebook پر شیئر</a>
+          <a class="share-btn wa" href="#" onclick="share('whatsapp')">WhatsApp شیئر</a>
+          <a class="share-btn tw" href="#" onclick="share('twitter')">X (Twitter)</a>
+        </div>
+
+        <div style="margin-top:12px">
+          <span class="counter">👀 وزٹرز: <span id="visCount">0</span></span>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:16px">
+        <div class="col card">
+          <h3 class="label">Quick Start (جلدی)</h3>
+          <ol class="small">
+            <li>پہلے <b>میری پروفائل</b> میں اپنا نام اور موبائل درج کریں۔</li>
+            <li>پھر <b>ٹاسک</b> میں کلائنٹ کے طور پر نیا ٹاسک بنائیں (Create Task)۔</li>
+            <li>Payment پر کلک کریں — یہ demo میں Wallet میں پیسے ڈالے گا (simulate)۔</li>
+            <li>Freelancer جب کام مکمل کرے گا تو آپ Release کریں، اور پھر وہ Withdraw کر سکے گا۔</li>
+          </ol>
+          <div class="notice small">نوٹ: حقیقی EasyPaisa/JazzCash integration کے لیے نیچے والے Admin سیکشن میں placeholder دکھائے گئے ہیں — وہاں server-side code لگانا ہوگا۔</div>
+        </div>
+
+        <div class="col card">
+          <h3 class="label">آج کی خاص بات</h3>
+          <p class="small">اپنا reference link دوستوں کو دیں — جب وہ آئیں تو آپ کا اعتبار بڑھے گا۔</p>
+          <input id="refLink" readonly value="https://abdulqayyumsaifi137-pixel.github.io/Kaam-Bazaar/" />
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile" class="card" style="display:none">
+      <h3>میری پروفائل</h3>
+      <div class="row">
+        <div class="col">
+          <label>نام</label>
+          <input id="p_name" placeholder="اپنا نام لکھیں (مثال: احمد)" />
+          <label>فون نمبر (EasyPaisa/JazzCash)</label>
+          <input id="p_mobile" placeholder="03XXXXXXXXX" />
+          <label>مختصر تعارف</label>
+          <textarea id="p_bio" rows="3" placeholder="میں کون ہوں اور کیا کرتا ہوں"></textarea>
+          <button class="btn" onclick="saveProfile()">پروفائل محفوظ کریں</button>
+        </div>
+        <div class="col">
+          <h4>پروفائل پیش نظارہ</h4>
+          <div class="card" id="profilePreview">
+            <div class="label" id="pv_name">نام نہیں ملا</div>
+            <div class="muted small" id="pv_mobile">فون نمبر</div>
+            <p id="pv_bio" class="small muted">تعارف</p>
+            <div style="margin-top:8px">
+              <div>والیٹ بیلنس: <b id="pv_balance">₨0</b></div>
+              <div style="margin-top:8px">
+                <button class="btn-ghost" onclick="simulateTopupModal()">Wallet میں پیسے ڈالیں</button>
+                <button class="btn" onclick="showSection('wallet')">والٹ پر جائیں</button>
+              </div>
+            </div>
+          </div>
+          <div class="muted small" style="margin-top:8px">نوٹ: والِٹ اور ویڈراول سب demo میں کلائنٹ-سائیڈ ذخیرہ ہوتا ہے (localStorage)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASKS -->
+    <section id="tasks" class="card" style="display:none">
+      <h3>ٹاسکس / کام</h3>
+
+      <div class="row">
+        <div class="col">
+          <h4>Create Task (کلائنٹ کے لیے)</h4>
+          <label>کار کا عنوان</label>
+          <input id="t_title" placeholder="مثال: لاگو ڈیزائن" />
+          <label>تفصیل</label>
+          <textarea id="t_desc" rows="3" placeholder="کام کی تفصیل"></textarea>
+          <label>ادائیگی (روپے)</label>
+          <input id="t_price" type="number" placeholder="مثال: 1000" />
+          <button class="btn" onclick="createTask()">Create & Pay (ڈیمو میں والٹ/پیمنٹ)</button>
+        </div>
+
+        <div class="col">
+          <h4>Available Tasks</h4>
+          <div id="taskList" class="small"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WALLET -->
+    <section id="wallet" class="card" style="display:none">
+      <h3>والٹ / Withdraw</h3>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="label">میرا بیلنس</div>
+            <div style="font-size:20px;margin-top:8px">₨ <span id="w_balance">0</span></div>
+            <p class="muted small">پلیٹ فارم کمیشن: <span id="platformCommission">10%</span></p>
+            <button class="btn" onclick="simulateTopupModal()">Wallet میں پیسے ڈالیں (Demo)</button>
+          </div>
+
+          <div class="card" style="margin-top:10px">
+            <h4>Withdraw Request</h4>
+            <label>رقم (روپے)</label>
+            <input id="wd_amount" type="number" placeholder="مثال: 500" />
+            <label>فون نمبر (جس پر بھیجنا ہے)</label>
+            <input id="wd_mobile" placeholder="03XXXXXXXXX" />
+            <div style="margin-top:8px">
+              <button class="btn" onclick="requestWithdraw()">Withdraw Request بھیجیں</button>
+            </div>
+            <div class="muted small" style="margin-top:8px">نوٹ: یہ demo میں Admin approval کے بعد payout simulate کرے گا۔</div>
+          </div>
+        </div>
+
+        <div class="col">
+          <h4>Withdraw Requests</h4>
+          <div id="withdrawList" class="small"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN (PAYOUT placeholders) -->
+    <section id="admin" class="card" style="display:none">
+      <h3>Admin Panel (پےآؤٹ / Approve)</h3>
+
+      <div class="row">
+        <div class="col">
+          <h4>Pending Withdrawals</h4>
+          <div id="adminWithdraws" class="small"></div>
+        </div>
+
+        <div class="col">
+          <h4>Integration Notes (جہاں حقیقی API لگائیں)</h4>
+          <div class="card small">
+            <p><b>Important:</b> اصل JazzCash / EasyPaisa integration سرور-سائڈ کرنا ہوگا (Node/PHP/Python) — credentials client پر نہیں رکھیں۔</p>
+            <ol>
+              <li>Server پر endpoint بنائیں: <code>POST /api/payout</code> — یہ endpoint merchant credentials سے JazzCash/EasyPaisa کو کال کرے گا۔</li>
+              <li>یہ فائل کے نیچے function <code>performRealPayout()</code> نام کا placeholder دیا گیا ہے؛ جب آپ server بنا لیں تو وہاں fetch سے real API endpoint کال کریں۔</li>
+              <li>Webhook: payment confirmations کے لیے gateway کے webhooks کو server پر handle کریں تاکہ پیمنٹس auto verify ہوں۔</li>
+            </ol>
+
+            <p class="muted small">اگر آپ چاہیں تو میں server-side code بھی لکھ کر دے دوں (Node.js Express example) — بتائیے کونسی زبان پسند ہے۔</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="muted small">یہ ڈیمو فائل مقصوداً client-side simulation دیتی ہے — حقیقی پیمنٹ کیلئے server-side integration ضروری ہے۔</div>
+      <div style="margin-top:6px">© کام بازار</div>
+    </footer>
+  </div>
+
+  <script>
+    /* Simple demo platform state stored in localStorage so آپ copy/paste کے بعد فوراً کام کرے */
+    const STATE_KEY = 'kaam_bazaar_demo_v1';
+
+    function defaultState(){
+      return {
+        visitors: Math.floor(Math.random()*120+30),
+        profile: {name:'', mobile:'', bio:'', balance:0},
+        tasks: [], // each: {id,title,desc,price,client,freelancer,status:'open/assigned/completed'}
+        withdraws: [], // each: {id,user,amount,mobile,status:'pending/approved/paid'}
+        commissionPercent: 10
+      };
+    }
+
+    // load/save
+    function loadState(){ return JSON.parse(localStorage.getItem(STATE_KEY) || JSON.stringify(defaultState())); }
+    function saveState(s){ localStorage.setItem(STATE_KEY, JSON.stringify(s)); renderAll(); }
+
+    // init
+    let state = loadState();
+    function renderAll(){ state = loadState(); document.getElementById('visCount').innerText = state.visitors;
+      document.getElementById('pv_name').innerText = state.profile.name || 'نام نہیں ملا';
+      document.getElementById('pv_mobile').innerText = state.profile.mobile || 'فون نمبر';
+      document.getElementById('pv_bio').innerText = state.profile.bio || 'تعارف دستیاب نہیں';
+      document.getElementById('pv_balance').innerText = '₨' + (state.profile.balance || 0);
+      document.getElementById('w_balance').innerText = (state.profile.balance || 0);
+      document.getElementById('platformCommission').innerText = state.commissionPercent + '%';
+      renderTasks(); renderWithdraws(); renderAdminWithdraws();
+      document.getElementById('refLink').value = location.href;
+    }
+
+    // nav
+    function showSection(id){ document.querySelectorAll('section').forEach(s=>s.style.display='none'); document.getElementById(id).style.display='block'; }
+    showSection('home');
+
+    // profile
+    function saveProfile(){
+      const s = loadState();
+      s.profile.name = document.getElementById('p_name').value.trim();
+      s.profile.mobile = document.getElementById('p_mobile').value.trim();
+      s.profile.bio = document.getElementById('p_bio').value.trim();
+      saveState(s);
+      alert('پروفائل محفوظ ہوگیا');
+    }
+
+    // tasks
+    function createTask(){
+      const s = loadState();
+      const title = document.getElementById('t_title').value.trim();
+      const desc = document.getElementById('t_desc').value.trim();
+      const price = Number(document.getElementById('t_price').value || 0);
+      if(!title || !price){ alert('عنوان اور قیمت دیں'); return; }
+      const id = 'T' + Date.now();
+      // Demo: پیمنٹ simulate کریں — یہاں آپ حقیقی gateway کے ساتھ redirect کریں گے
+      const confirmPay = confirm(`آپ ${price} روپے ادا کریں گے (Demo). Continue?`);
+      if(!confirmPay) return;
+      // simulate: reduce client's balance? in demo we'll assume client paid externally and escrow holds money
+      // store task with escrowPaid = true
+      s.tasks.push({id,title,desc,price,client:s.profile.name || 'Client', freelancer:'', status:'open', escrowPaid:true});
+      s.visitors += 1;
+      saveState(s);
+      alert('ٹاسک بنایا گیا اور پیمنٹ Escrow میں رکھا گیا (Demo). اب کوئی Freelancer اسے قبول کر سکے گا.');
+      document.getElementById('t_title').value=''; document.getElementById('t_desc').value=''; document.getElementById('t_price').value='';
+    }
+
+    function renderTasks(){
+      const s = loadState();
+      const el = document.getElementById('taskList'); el.innerHTML='';
+      if(s.tasks.length===0){ el.innerHTML='<div class="muted small">کوئی ٹاسک موجود نہیں</div>'; return; }
+      s.tasks.slice().reverse().forEach(t=>{
+        const div = document.createElement('div'); div.className='task';
+        div.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center">
+          <div><b>${t.title}</b><div class="muted small">${t.desc}</div></div>
+          <div style="text-align:right"><div>₨ ${t.price}</div><div class="muted small">${t.status}</div></div>
+        </div>`;
+        const btnRow = document.createElement('div'); btnRow.style.marginTop='8px';
+        if(t.status==='open'){
+          const acc = document.createElement('button'); acc.className='btn-ghost'; acc.innerText='Accept as Freelancer'; acc.onclick=()=>acceptTask(t.id);
+          btnRow.appendChild(acc);
+        } else if(t.status==='assigned'){
+          const done = document.createElement('button'); done.className='btn'; done.innerText='Mark as Completed (Freelancer)'; done.onclick=()=>completeTask(t.id);
+          btnRow.appendChild(done);
+        } else if(t.status==='completed'){
+          const rel = document.createElement('button'); rel.className='btn'; rel.innerText='Release Payment (Client)'; rel.onclick=()=>releasePayment(t.id);
+          btnRow.appendChild(rel);
+        }
+        div.appendChild(btnRow);
+        el.appendChild(div);
+      });
+    }
+
+    function acceptTask(id){
+      const s = loadState();
+      const t = s.tasks.find(x=>x.id===id);
+      if(!t) return alert('ٹاسک نہیں ملا');
+      const freelancer = prompt('اپنا نام بطور Freelancer لکھیں:','Freelancer');
+      if(!freelancer) return;
+      t.freelancer = freelancer;
+      t.status = 'assigned';
+      saveState(s);
+      alert('ٹی سک قابل قبول ہو گیا — اب کام مکمل کریں اور Mark as Completed کریں۔');
+    }
+
+    function completeTask(id){
+      const s = loadState();
+      const t = s.tasks.find(x=>x.id===id);
+      if(!t) return;
+      t.status = 'completed';
+      saveState(s);
+      alert('کام مارک کیا گیا Completed کے طور پر۔ کلائنٹ Release کر کے پیمنٹ ریلیز کرے گا۔');
+    }
+
+    // release payment: client releases escrow -> platform cuts commission -> freelancer balance بڑھتا ہے
+    function releasePayment(id){
+      const s = loadState();
+      const t = s.tasks.find(x=>x.id===id);
+      if(!t) return;
+      if(!t.escrowPaid) return alert('Escrow میں رقم موجود نہیں');
+      const confirmRel = confirm('کیا آپ واقعی پیمنٹ release کرنا چاہتے ہیں؟ (Platform commission: ' + s.commissionPercent + '%)');
+      if(!confirmRel) return;
+      const commission = Math.round(t.price * s.commissionPercent / 100);
+      const pay = t.price - commission;
+      // find freelancer by name; if freelancer matches current profile name, add to own balance, else we'll store in withdraws as unpaid to another user (demo simplification)
+      if(s.profile.name && s.profile.name === t.freelancer){
+        s.profile.balance = (s.profile.balance||0) + pay;
+      } else {
+        // create a pseudo user balance stored in withdraws array for that freelancer
+        s.withdraws.push({id:'W_auto_'+Date.now(), user:t.freelancer, amount:pay, mobile:'(unknown)', status:'pending', note:'Auto credit for '+t.id});
+      }
+      t.escrowPaid = false;
+      t.status = 'paid';
+      s.visitors += 1;
+      saveState(s);
+      alert('Payment released. Platform commission taken: ₨' + commission + '. Freelancer کو بیلنس یا withdraw کے ذریعے رقم ملے گی (Demo).');
+    }
+
+    // WALLET simulate top-up
+    function simulateTopupModal(){
+      const amount = Number(prompt('Wallet میں کتنے روپے ڈالیں؟ (Demo) مثال: 1000',500));
+      if(!amount || amount<=0) return;
+      const s = loadState();
+      s.profile.balance = (s.profile.balance||0) + amount;
+      s.visitors += 1;
+      saveState(s);
+      alert('Wallet میں جمع ہو گیا (Demo): ₨' + amount);
+    }
+
+    // withdraw request
+    function requestWithdraw(){
+      const s = loadState();
+      const amount = Number(document.getElementById('wd_amount').value || 0);
+      const mobile = document.getElementById('wd_mobile').value.trim();
+      if(!amount || amount<=0) return alert('صحیح رقم دیں');
+      if(!mobile) return alert('فون نمبر دیں');
+      if((s.profile.balance||0) < amount) return alert('آپ کے والٹ میں بیلنس کم ہے');
+      // create withdraw request (pending)
+      const id = 'WD' + Date.now();
+      s.withdraws.push({id,user:s.profile.name||'You', amount, mobile, status:'pending'});
+      // reduce user balance immediately or keep until paid? We'll deduct on approve to simulate safety.
+      // For demo keep balance until admin approves; so user sees pending.
+      saveState(s);
+      alert('Withdraw request بھیج دی گئی۔ Admin سے approval کا انتظار کریں۔');
+      document.getElementById('wd_amount').value=''; document.getElementById('wd_mobile').value='';
+    }
+
+    function renderWithdraws(){
+      const s = loadState();
+      const el = document.getElementById('withdrawList'); el.innerHTML='';
+      if(s.withdraws.length===0){ el.innerHTML='<div class="muted small">کوئی withdraw request نہیں</div>'; return; }
+      s.withdraws.slice().reverse().forEach(w=>{
+        const div = document.createElement('div'); div.className='task';
+        div.innerHTML = `<div><b>${w.user}</b> نے درخواست کی — ₨ ${w.amount} — ${w.mobile}</div><div class="muted small">Status: ${w.status}</div>`;
+        el.appendChild(div);
+      });
+    }
+
+    // admin view for withdraws
+    function renderAdminWithdraws(){
+      const s = loadState();
+      const el = document.getElementById('adminWithdraws'); el.innerHTML='';
+      const pending = s.withdraws.filter(x=>x.status==='pending');
+      if(pending.length===0){ el.innerHTML='<div class="muted small'>کوئی pending payouts نہیں</div>'; return; }
+      pending.forEach(w=>{
+        const div = document.createElement('div'); div.className='task';
+        div.innerHTML = `<div><b>${w.user}</b> — ₨${w.amount} — ${w.mobile}</div><div class="muted small">ID: ${w.id}</div>`;
+        const approve = document.createElement('button'); approve.className='btn'; approve.style.marginTop='8px'; approve.innerText='Approve & Pay (Simulate)';
+        approve.onclick = ()=>adminApprove(w.id);
+        const reject = document.createElement('button'); reject.className='btn-ghost'; reject.style.marginTop='8px'; reject.style.marginLeft='8px'; reject.innerText='Reject';
+        reject.onclick = ()=>adminReject(w.id);
+        div.appendChild(approve); div.appendChild(reject);
+        el.appendChild(div);
+      });
+    }
+
+    // Admin approve: here we simulate a server-side payout call.
+    function adminApprove(id){
+      const s = loadState();
+      const w = s.withdraws.find(x=>x.id===id);
+      if(!w) return alert('ریکارڈ نہیں ملا');
+      // Before paying: check balance for that user (demo: if same as current profile, deduct; otherwise we assume external)
+      if(s.profile.name === w.user){
+        if((s.profile.balance||0) < w.amount) return alert('User balance کم ہے (admin simulate)');
+        // Deduct and mark paid
+        s.profile.balance -= w.amount;
+        w.status = 'paid';
+        w.paidAt = new Date().toISOString();
+        // Simulate payout by calling performRealPayout placeholder
+        performRealPayout(w).then(res=>{
+          // In demo, success always
+          saveState(s);
+          alert('Payout simulated as successful. صارف کو پیسے بھیج دیے گئے (Demo).');
+        }).catch(err=>{
+          alert('Payout failed (demo): ' + err);
+        });
+      } else {
+        // If freelancer is other user, mark as paid but in real app you would call server to pay their mobile via JazzCash/EasyPaisa
+        w.status = 'paid';
+        w.paidAt = new Date().toISOString();
+        saveState(s);
+        alert('Payout marked paid (Demo) — حقیقی system میں server سے JazzCash/EasyPaisa call کریں۔');
+      }
+    }
+
+    function adminReject(id){
+      const s = loadState();
+      const w = s.withdraws.find(x=>x.id===id);
+      if(!w) return;
+      w.status = 'rejected';
+      saveState(s);
+      alert('Request rejected');
+    }
+
+    // Placeholder for real payout: here we simulate async call
+    async function performRealPayout(withdrawObj){
+      /* ===== IMPORTANT =====
+         یہ جگہ تبدیل کریں جب آپ کے پاس backend ہو:
+         - آپ کو server پر endpoint بنانا ہوگا: POST /api/payout
+         - server اپنے JazzCash/EasyPaisa credentials سے حقیقی payout کرے گا اور success/fail واپس کرے گا
+         - یہاں fetch سے وہ endpoint call کریں اور response handle کریں
+
+         Example (server ready ہونے پر):
+         return fetch('https://yourserver.com/api/payout', {
+           method:'POST',
+           headers:{'Content-Type':'application/json','Authorization':'Bearer <ADMIN_TOKEN>'},
+           body: JSON.stringify({mobile: withdrawObj.mobile, amount: withdrawObj.amount, reference: withdrawObj.id})
+         }).then(r=>r.json());
+      */
+      // demo: wait 1s then resolve success
+      return new Promise((resolve)=> setTimeout(()=>resolve({ok:true, message:'Demo payout success'}), 1000));
+    }
+
+    // share (simple)
+    function share(type){
+      const url = encodeURIComponent(location.href);
+      const text = encodeURIComponent('کام بازار دیکھیں — سیکھو، کام کرو، کماؤ!');
+      if(type==='facebook') window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`,'_blank');
+      if(type==='twitter') window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`,'_blank');
+      if(type==='whatsapp') window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`,'_blank');
+    }
+
+    // increase visitors on open (demo)
+    window.addEventListener('load', ()=>{ const s=loadState(); s.visitors = (s.visitors||0)+1; saveState(s); });
+
+    // initial render
+    renderAll();
+
+    // Expose some functions to console for easier testing
+    window.__kb = {loadState, saveState, defaultState};
+  </script>
+</body>
+</html>
